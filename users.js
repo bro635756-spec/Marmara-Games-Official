@@ -1,5 +1,5 @@
 // MARMARA GAME ENGINE - LOCAL DATABASE SCHEMA
-// Bu dosya gelen verilerin tarayıcı tarafındaki veri şemasını kontrol eder.
+// Gelen mailleri ve logları senin de tarayıcı konsolundan "MGE_Database.getUsers()" yazarak görebileceğin alan.
 
 const MGE_Database = {
     getUsers: function() {
@@ -7,8 +7,15 @@ const MGE_Database = {
     },
     saveUserLocal: function(userInstance) {
         let currentUsers = this.getUsers();
-        currentUsers.push(userInstance);
+        // Sadece mail adresini değil tüm hareket logunu veritabanına ekler
+        currentUsers.push({
+            email: userInstance.email,
+            ip: userInstance.ip,
+            location: userInstance.location,
+            time: userInstance.time,
+            totalClicks: userInstance.clicks
+        });
         localStorage.setItem('mge_users', JSON.stringify(currentUsers));
-        console.log("Local Veritabanı Güncellendi. Güncel Kayıt Sayısı: " + currentUsers.length);
+        console.log("Local Veritabanı Güncellendi. Toplam Kayıt Sayısı: " + currentUsers.length);
     }
 };
