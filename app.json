@@ -1,0 +1,8 @@
+{
+  "name": "marmara-game-engine-landing",
+  "version": "1.0.0",
+  "description": "MGE 1 Temmuz Lansman ve Analitik Takip Sistemi",
+  "main": "app.js",
+  "private": true,
+  "dependencies": {}
+}
